@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of User</title>
+    <style>
+        table{
+            display: flex;
+            justify-content: center;
+           
+           
+        }
+        th{
+            width: 50%;
+        }
+        th, td{
+             border: 1px solid black ;
+              text-align: center;
+        }
+    </style>
+</head>
+<body>
+  
+    {{!-- {{update_user}} --}}
+    
+    <h2>{{title}}</h2>{{!-- variable from the
+    AuthAccount.js--}}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Song</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        {{#each user}} {{!-- each  are loops, that need to have a
+        open and closing open # and the close are /
+        to be able to access or use the code from
+        other file  you must use the {{ }} double curly in hbs
+        user variable--}}
+            <tr>
+                <td> {{this.name}}</td>{{!--  this object --}}
+                <td> {{this.song}}</td>{{!-- {{}} are for
+                codes that have a logic on it --}} 
+                <td> {{this.price}}</td>
+               <td><a href="/Auth/update/{{this.name}}">Edit</a></td>
+               {{!-- to edit single value or email--}}
+               <td><a href="/Auth/delete_user/{{this.name}}" onclick="return confirm("Are you sure you want to delete this record?")">Delete</a></td>
+            </tr>
+        {{/each}}
+    </table>
+    
+      {{message}}
+
+</body>
+</html>
